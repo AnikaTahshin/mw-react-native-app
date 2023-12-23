@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-
+import Draggable from "react-native-draggable";
 const Card = ({ card }) => {
   const [data, setData] = useState(card);
   const [title, setTitle] = useState(data.title);
@@ -53,6 +53,9 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 12,
+  },
+  draggable: {
+    zIndex: 999,
   },
 });
 

@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import Card from "./Card";
 import Button from "./Button";
@@ -13,7 +14,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+import Draggable from "react-native-draggable";
 
+const screenHeight = Dimensions.get("window").height;
+const screenWidth = Dimensions.get("window").width;
 const Phase = ({ phase }) => {
   const [cards, setCards] = useState(phase.cards || []);
   const [index, setIndex] = useState(0);
@@ -59,7 +63,8 @@ const Phase = ({ phase }) => {
 
 const styles = StyleSheet.create({
   container: {
-    minWidth: 300,
+    height: screenHeight,
+    width: screenWidth,
     padding: 10,
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     borderRadius: 10,
