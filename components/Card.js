@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
+import { View, StyleSheet, TextInput } from "react-native";
 
 const Card = ({ card }) => {
   const [title, setTitle] = useState(card.title);
@@ -19,8 +13,6 @@ const Card = ({ card }) => {
   const descChange = (text) => {
     setDesc(text);
   };
-
-  console.log("changes in title and description", title, desc);
 
   return (
     <View style={styles.container}>
