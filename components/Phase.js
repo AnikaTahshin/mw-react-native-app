@@ -13,15 +13,23 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+
 const Phase = ({ phase }) => {
   const [cards, setCards] = useState(phase.cards || []);
   const [index, setIndex] = useState(0);
+
+  // ADD CARD
   const addCard = () => {
-    const newCard = { id: setIndex(index + 1) };
+    const newCard = { id: index };
     setCards((prevCards) => [...prevCards, newCard]);
+    setIndex(index + 1);
   };
 
-  console.log("getting new cards", cards);
+  //REMOVE EACH CARD
+  const deleteCard = (id) => {
+    const filteredCards = cards.filter((card) => card.id !== id);
+    setCards(filteredCards);
+  };
 
   return (
     <View>
@@ -32,8 +40,13 @@ const Phase = ({ phase }) => {
         </View>
 
         <ScrollView>
-          {cards.map((card) => (
-            <Card key={index} card={card} />
+          {cards.map((card, index) => (
+            <View key={index}>
+              <TouchableOpacity onPress={() => deleteCard(card.id)}>
+                <Text>Delete Card</Text>
+              </TouchableOpacity>
+              <Card key={index} card={card} />
+            </View>
           ))}
           <TouchableOpacity style={styles.buttonContainer} onPress={addCard}>
             <Text style={styles.buttonText}>+ Add card</Text>

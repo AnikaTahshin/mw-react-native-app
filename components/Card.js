@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TextInput } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 
 const Card = ({ card }) => {
-  const [title, setTitle] = useState(card.title);
-
-  const [desc, setDesc] = useState(card.description);
+  const [data, setData] = useState(card);
+  const [title, setTitle] = useState(data.title);
+  const [desc, setDesc] = useState(data.description);
 
   const titleChange = (text) => {
     setTitle(text);
@@ -16,17 +22,19 @@ const Card = ({ card }) => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.title}
-        onChangeText={(text) => titleChange(text)}
-        value={title}
-      />
+      <View>
+        <TextInput
+          style={styles.title}
+          onChangeText={(text) => titleChange(text)}
+          value={title}
+        />
 
-      <TextInput
-        onChangeText={(text) => descChange(text)}
-        style={styles.description}
-        value={desc}
-      />
+        <TextInput
+          onChangeText={(text) => descChange(text)}
+          style={styles.description}
+          value={desc}
+        />
+      </View>
     </View>
   );
 };
